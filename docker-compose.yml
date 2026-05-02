@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  bitping:
+    image: bitping/bitpingd:latest
+    container_name: bitping_node
+    restart: always
+    environment:
+      - BITPING_EMAIL=${BITPING_EMAIL}
+      - BITPING_PASSWORD=${BITPING_PASSWORD}
+    volumes:
+      - bitping_data:/root/.bitpingd
+
+  repocket:
+    image: repocket/repocket:latest
+    container_name: repocket_node
+    restart: always
+    environment:
+      - RP_EMAIL=${RP_EMAIL}
+      - RP_API_KEY=${RP_API_KEY}
+
+volumes:
+  bitping_data:
